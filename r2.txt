@@ -1,0 +1,28 @@
+enable
+configure terminal
+hostname R2
+banner motd # acesso restrito #
+enable secret livre
+service password-encryption
+line console 0
+password software
+login
+line vty 0 15
+password software
+login
+interface g0/0
+description Link para subrede 2
+ip address 192.168.100.126 255.255.255.128
+ipv6 address 2001:DB8:CAFE:2::1/64
+no shutdown
+interface g0/1
+description Link para internet
+ip address 200.165.100.2 255.255.255.252
+no shutdown
+interface s0/0/0
+description Link para subrede 3
+ip address 192.168.100.162 255.255.255.252
+ipv6 address 2001:DB8:CAFE:3::2/64
+no shutdown
+end
+write

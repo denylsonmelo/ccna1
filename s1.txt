@@ -1,0 +1,19 @@
+enable
+configure terminal
+hostname S1
+banner motd # acesso restrito #
+enable secret livre
+service password-encryption
+line console 0
+password software
+login
+line vty 0 15
+password software
+login
+interface vlan 1
+description Vlan do S1
+ip address 192.168.100.130 255.255.255.224
+no shutdown
+ip default-gateway 192.168.100.158
+end
+write
